@@ -751,7 +751,10 @@
         _isInteractive = YES;
     }
     
-    [self.defaultInteractiveTransition updateTopViewHorizontalCenterWithRecognizer:recognizer];
+    CGPoint velocity = [recognizer velocityInView:self.view];
+    if (fabsf(velocity.x) > fabsf(velocity.y)) {
+        [self.defaultInteractiveTransition updateTopViewHorizontalCenterWithRecognizer:recognizer];
+    }
     _isInteractive = NO;
 }
 
